@@ -1,0 +1,58 @@
+block variables 
+- const description = ""
+- const image = ""
+- const site = ""
+- const maskIconColor = ""
+- const TileColor = ""
+- const themeColor = ""
+- const favicon = ""
+
+doctype html
+html(class=isDesktop ? "desktop" : isTablet ? "tablet" : isPhone ? "phone" : "" lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+    base(href="/")
+
+    title #{title}
+
+    meta(name="description" content=description)
+
+    link(rel="apple-touch-icon" sizes="180x180" href=favicon)
+    link(rel="icon" type="image/png" sizes="32x32" href=favicon)
+    link(rel="icon" type="image/png" sizes="16x16" href=favicon)
+    link(rel="manifest" href="/site.webmanifest.json" crossorigin="use-credentials")
+    link(rel="mask-icon" href=favicon color=maskIconColor)
+    meta(name="msapplication-TileColor" content=TileColor)
+    meta(name="theme-color" content=themeColor)
+
+    meta(property="og:type" content="website")
+    meta(property="og:title" content=title)
+    meta(property="og:description" content=description)
+    meta(property="og:image" content=image ? image : "")
+
+    meta(property="twitter:card" content="summary_large_image")
+    meta(property="twitter:title" content=title)
+    meta(property="twitter:description" content=description)
+    meta(property="twitter:image" content=image ? image : "")
+    meta(property="twitter:site" content=site ? site : "")
+
+    if isDev
+      link(rel="stylesheet" href="styles/index.css")
+  body
+    style
+      if !isDev
+        include ../../public/styles/index.css
+      include ../../public/fonts/type.css
+    //- include preloader
+    .app.preloading#smooth-wrapper
+      .__app#smooth-content
+        .content#content(data-template=template)
+          include header
+          block content
+          include footer
+
+    script(src="app/index.js") 
+    if isDev
+      script(src="styles/index.js") 

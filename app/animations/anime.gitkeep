@@ -1,0 +1,20 @@
+import gsap from "gsap"
+
+export default function () {
+  const mm = gsap.matchMedia()
+  let tl: gsap.core.Timeline
+  tl = gsap.timeline()
+  mm.add("(min-width:761px) and (max-width:1919px)", () => {
+    tl = gsap.timeline()
+  })
+
+  mm.add("(min-width:1920px)", () => {
+    tl = gsap.timeline()
+  })
+
+  mm.add("(max-width:760px)", () => {
+    tl = gsap.timeline({ delay: 5 })
+  })
+
+  return tl
+}
