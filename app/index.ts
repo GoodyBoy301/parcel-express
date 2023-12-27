@@ -57,6 +57,7 @@ class App extends Framework implements $App {
         counter++
       }
     })
+    if (images.length === 0) window.$(".app").classList.remove("preloading")
   }
 
   createPartials() {

@@ -44,7 +44,6 @@ export default class Scroll {
   create(page: string) {
     this.lenis = new Lenis({
       smoothTouch: page === "home" && innerWidth >= 768 ? true : false,
-      infinite: page === "home" && innerWidth >= 768 ? true : false,
       wrapper: innerWidth >= 768 ? window : window.$(".app"),
     })
 
