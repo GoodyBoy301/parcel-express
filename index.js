@@ -32,7 +32,7 @@ app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "pug")
 
 const titles = {
-  home: "New WEbsite",
+  home: "New Website",
 }
 
 app.get("/", async (req, res) => {
