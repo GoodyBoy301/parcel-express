@@ -70,8 +70,9 @@ class App extends Framework implements $App {
       home: new Home(this),
       // longPage: new Home(this),
     }
-    this.page = this.pages[this.template]
-    this.page.create()
+ this.page = this.pages[this.template]
+      ? this.pages[this.template]
+      : this.pages.home    this.page.create()
   }
 
   onresize() {
